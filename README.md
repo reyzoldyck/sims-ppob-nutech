@@ -31,7 +31,3 @@ Aplikasi ini mengimplementasikan fitur PPOB (Payment Point Online Bank) dengan i
 - **Axios**
 - **Tailwind CSS**
 - **Vite**
-
----
-
-## 📂 Struktur Folder
