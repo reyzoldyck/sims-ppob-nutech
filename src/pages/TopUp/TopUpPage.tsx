@@ -6,7 +6,7 @@ import {
 } from "../../features/transaction/transactionSlice";
 import { setBalance } from "../../features/balance/balanceSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { topUpSchema } from "../../schema/topUpSchema";
+import { topUpSchema } from "../../schemas/topUpSchema";
 import GreetingBalanceCard from "../../components/GreetingBalanceCard";
 import TransactionModal from "../../components/TransactionModal";
 import { formatRupiah, parseRupiah } from "../../utils/rupiah";

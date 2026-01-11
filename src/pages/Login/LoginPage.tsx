@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { login } from "../../features/auth/authSlice";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { loginSchema } from "../../schema/loginSchema";
+import { loginSchema } from "../../schemas/loginSchema";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();

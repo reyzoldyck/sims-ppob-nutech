@@ -8,7 +8,7 @@ import {
 } from "../../features/profile/profileSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { profileSchema } from "../../schema/profileSchema";
+import { profileSchema } from "../../schemas/profileSchema";
 
 export default function ProfileEditPage() {
   const dispatch = useAppDispatch();

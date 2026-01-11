@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { register, resetAuthState } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { registerSchema } from "../../schema/registerSchema";
+import { registerSchema } from "../../schemas/registerSchema";
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch();
