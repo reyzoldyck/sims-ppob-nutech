@@ -3,9 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { register, resetAuthState } from "../../features/auth/authSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-/* ================= VALIDATION ================= */
 const RegisterSchema = Yup.object().shape({
   email: Yup.string()
     .email("Format email tidak valid")
@@ -26,7 +25,17 @@ const RegisterSchema = Yup.object().shape({
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch();
-  const { loading, success, error } = useAppSelector((state) => state.auth);
+  const { loading, success, error, isAuthenticated } = useAppSelector(
+    (state) => state.auth
+  );
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (success) {

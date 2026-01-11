@@ -9,6 +9,7 @@ import HistoryPage from "../pages/History/HistoryPage";
 import ProfilePage from "../pages/Profile/ProfilePage";
 import AppLayout from "../layouts/AppLayout";
 import ProfileViewPage from "../pages/Profile/ProfileViewPage";
+import NotFoundPage from "../pages/NotFound/NotFoundPage";
 
 export default function AppRoutes() {
   return (
@@ -65,6 +66,8 @@ export default function AppRoutes() {
           }
         />
       </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
