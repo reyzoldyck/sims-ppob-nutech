@@ -7,7 +7,7 @@ import { registerSchema } from "../../schemas/registerSchema";
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch();
-  const { loading, success, error, isAuthenticated } = useAppSelector(
+  const { loading, success, error, isAuthenticated, message } = useAppSelector(
     (state) => state.auth
   );
 
@@ -23,6 +23,7 @@ export default function RegisterPage() {
     if (success) {
       setTimeout(() => {
         dispatch(resetAuthState());
+        navigate("/login");
       }, 1500);
     }
   }, [success, dispatch]);
@@ -156,6 +157,7 @@ export default function RegisterPage() {
               </div>
 
               {error && <p className="text-red-500 text-sm">{error}</p>}
+              {message && <p className="text-green-500 text-sm">{message}</p>}
 
               <button
                 type="submit"
