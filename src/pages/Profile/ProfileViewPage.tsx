@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchProfile } from "../../features/profile/profileSlice";
 import LogoutButton from "../../components/auth/LogoutButton";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 export default function ProfileViewPage() {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ export default function ProfileViewPage() {
     dispatch(fetchProfile());
   }, [dispatch]);
 
-  if (loading) return <p className="text-center mt-10">Memuat...</p>;
+  if (loading) return <LoadingSpinner />;
 
   return (
     <div className="max-w-xl mx-auto px-4 text-center">
@@ -42,7 +43,7 @@ export default function ProfileViewPage() {
 
       <button
         onClick={() => navigate("/profile/edit")}
-        className="w-full bg-red-500 text-white py-3 rounded-lg mt-6"
+        className="w-full bg-red-500 text-white py-3 rounded-lg mt-6 cursor-pointer"
       >
         Edit Profil
       </button>

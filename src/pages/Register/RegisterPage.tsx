@@ -1,27 +1,9 @@
-import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { register, resetAuthState } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
-
-const RegisterSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Format email tidak valid")
-    .required("Email wajib diisi"),
-
-  first_name: Yup.string().required("Nama depan wajib diisi"),
-
-  last_name: Yup.string().required("Nama belakang wajib diisi"),
-
-  password: Yup.string()
-    .min(8, "Password minimal 8 karakter")
-    .required("Password wajib diisi"),
-
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "password tidak sama")
-    .required("Konfirmasi password wajib diisi"),
-});
+import { registerSchema } from "../../schema/registerSchema";
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch();
@@ -69,7 +51,7 @@ export default function RegisterPage() {
             password: "",
             confirmPassword: "",
           }}
-          validationSchema={RegisterSchema}
+          validationSchema={registerSchema}
           onSubmit={(values) => {
             dispatch(
               register({

@@ -23,7 +23,7 @@ export default function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="w-full border border-red-500 text-red-500 py-3 rounded-lg mt-4"
+      className="w-full border border-red-500 text-red-500 py-3 rounded-lg mt-4 cursor-pointer"
     >
       Logout
     </button>

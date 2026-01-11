@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { fetchServices } from "../../features/services/serviceSlice";
 import GreetingBalanceCard from "../../components/GreetingBalanceCard";
 import TransactionModal from "../../components/TransactionModal";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 export default function PaymentPage() {
   const [modalType, setModalType] = useState<
@@ -72,7 +73,7 @@ export default function PaymentPage() {
   };
 
   if (services.length === 0) {
-    return <p>Memuat data layanan...</p>;
+    return <LoadingSpinner />;
   }
 
   if (!service) return <p>Service tidak ditemukan</p>;

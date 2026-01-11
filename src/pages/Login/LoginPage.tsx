@@ -1,19 +1,9 @@
-import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { login } from "../../features/auth/authSlice";
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
-
-const LoginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Format email tidak valid")
-    .required("Email wajib diisi"),
-
-  password: Yup.string()
-    .min(8, "Password minimal 8 karakter")
-    .required("Password wajib diisi"),
-});
+import { loginSchema } from "../../schema/loginSchema";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
@@ -48,7 +38,7 @@ export default function LoginPage() {
 
         <Formik
           initialValues={{ email: "", password: "" }}
-          validationSchema={LoginSchema}
+          validationSchema={loginSchema}
           onSubmit={async (values) => {
             await dispatch(login(values)).unwrap();
           }}

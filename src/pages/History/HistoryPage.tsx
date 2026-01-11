@@ -4,6 +4,7 @@ import { fetchHistory } from "../../features/transaction/transactionSlice";
 import GreetingBalanceCard from "../../components/GreetingBalanceCard";
 import TransactionFilter from "../../components/history/TransactionFilter";
 import TransactionItem from "../../components/history/TransactionItem";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 export default function HistoryPage() {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ export default function HistoryPage() {
 
       <TransactionFilter selectedMonth={month} onChange={setMonth} />
 
-      {historyLoading && <p className="text-center mt-6">Memuat...</p>}
+      {historyLoading && <LoadingSpinner />}
 
       {!historyLoading && filteredHistory.length === 0 && (
         <p className="text-center mt-10 text-gray-400">
@@ -46,7 +47,7 @@ export default function HistoryPage() {
 
       <div className="space-y-4 mt-6">
         {filteredHistory.map((item) => (
-          <TransactionItem key={item.id} item={item} />
+          <TransactionItem key={item.invoice_number} item={item} />
         ))}
       </div>
 
