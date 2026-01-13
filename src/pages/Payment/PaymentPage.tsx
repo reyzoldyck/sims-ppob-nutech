@@ -4,7 +4,7 @@ import {
   payment,
   resetTransactionState,
 } from "../../features/transaction/transactionSlice";
-import { fetchBalance, setBalance } from "../../features/balance/balanceSlice";
+import { fetchBalance } from "../../features/balance/balanceSlice";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchServices } from "../../features/services/serviceSlice";
