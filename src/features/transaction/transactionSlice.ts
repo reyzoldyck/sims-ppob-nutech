@@ -31,6 +31,7 @@ export const topUp = createAsyncThunk(
   async (amount: number, { rejectWithValue }) => {
     try {
       const res = await topUpApi({ top_up_amount: amount });
+
       return res;
     } catch (err: any) {
       return rejectWithValue(err.response?.data?.message || "Top up gagal");
@@ -43,6 +44,7 @@ export const payment = createAsyncThunk(
   async (serviceCode: string, { rejectWithValue }) => {
     try {
       const res = await paymentApi({ service_code: serviceCode });
+      console.log(res);
       return res;
     } catch (err: any) {
       return rejectWithValue(err.response?.data?.message || "Transaksi gagal");

@@ -34,12 +34,17 @@ export default function TopUpPage() {
 
     dispatch(topUp(amount)).then((res: any) => {
       if (res.meta.requestStatus === "fulfilled") {
-        dispatch(setBalance(res.payload.balance));
+        dispatch(setBalance(res.payload.data.balance));
         setModalType("success");
       } else {
         setModalType("fail");
       }
     });
+  };
+
+  const handleCloseModal = () => {
+    setModalType(null);
+    dispatch(resetTransactionState());
   };
 
   return (
@@ -132,7 +137,7 @@ export default function TopUpPage() {
                 confirmText="Ya, lanjutkan Top Up"
                 message={message || (error as string)}
                 onConfirm={() => handleConfirmTopUp(amountNumber)}
-                onClose={() => setModalType(null)}
+                onClose={handleCloseModal}
               />
             </>
           );

@@ -41,20 +41,9 @@ export default function PaymentPage() {
   useEffect(() => {
     dispatch(fetchServices());
   }, [dispatch]);
+
   useEffect(() => {
     dispatch(fetchBalance());
-  }, [dispatch]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetTransactionState());
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetTransactionState());
-    };
   }, [dispatch]);
 
   const handleConfirmPayment = () => {
@@ -64,7 +53,7 @@ export default function PaymentPage() {
 
     dispatch(payment(service.service_code)).then((res: any) => {
       if (res.meta.requestStatus === "fulfilled") {
-        dispatch(setBalance(res.payload.balance));
+        dispatch(fetchBalance());
         setModalType("success");
       } else {
         setModalType("fail");
